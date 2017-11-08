@@ -33,7 +33,7 @@ d.addPairwiseEnergy(feats, compat=3,
 # 这将创建与颜色相关的图像特征——因为我们从卷积神经网络中得到的分割结果非常粗糙，
 # 我们可以使用局部的颜色特征来改善分割结果
 feats = create_pairwise_bilateral(sdims=(15, 15), schan=(10, 10, 10), img=image,
-                                  chdim=2)  # sdims=(50, 50), schan=(20, 20, 20)坐标和RGB
+                                  chdim=2)  # sdims=(50, 50)，schan=(20, 20, 20)： 坐标和RGB
 # 往小调.
 d.addPairwiseEnergy(feats, compat=10, kernel=dcrf.DIAG_KERNEL, normalization=dcrf.NORMALIZE_SYMMETRIC)
 # d是一个惩罚项好像,是随机分类的指标.
