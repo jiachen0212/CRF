@@ -1,13 +1,21 @@
 # crf-
-crf
+#crf
 encoding: utf-8
-
-import sys import numpy as np import tifffile as tiff import pydensecrf.densecrf as dcrf import tensorflow as tf from pydensecrf.utils import compute_unary, create_pairwise_bilateral, create_pairwise_gaussian, softmax_to_unary import matplotlib.pyplot as plt import skimage.io as io import cv2 from numpy import random
+import sys import numpy as np 
+import tifffile as tiff 
+import pydensecrf.densecrf as dcrf 
+import tensorflow as tf 
+from pydensecrf.utils 
+import compute_unary, create_pairwise_bilateral, create_pairwise_gaussian, softmax_to_unary 
+import matplotlib.pyplot as plt 
+import skimage.io as io 
+import cv2 from numpy 
+import random
 
 processed_probabilities = 前向传播达到的概率值
 
 def crf(image, softmax): # softmax = final_probabilities.squeeze() squeeze() 去除size为1的维度.   ＃softmax为2xmxn维度，代表每个像素点被分到两个类别上的可能概率值。   是符合概率分布的。 # print (softmax.shape) #(2, 5106, 300) # 输入数据应为概率值的负对数 # 你可以在softmax_to_unary函数的定义中找到更多信息 unary = softmax_to_unary(softmax) # 转为一元.
-
+#image 5通道（rgb + 坐标信息 xy） 
 # 输入数据应为C-连续的——我们使用了Cython封装器
 unary = np.ascontiguousarray(unary)
 
